@@ -38,6 +38,7 @@ the Python engine's proposals:
 | `burnin` | burn-in in samples (instead of `burnin_frac`) |
 | `burnin_auto` | burn-in = max(`burnin`, 2 t_eq), with t_eq the first sample at which logL and N reach their second-half ranges |
 | `target_ess` | stop each chain once min(ESS(N), ESS(logL)) after burn-in reaches this value |
+| `birth_resid_frac` | experimental: fraction of births placed in proportion to the squared positive residual S/N of a pixel (the rest uniform); the death acceptance carries the density of the reverse birth, so the target is unchanged. At 0.6, on three 240 x 240 px F182M frames, it raised the ESS of N per CPU-hour 1.9-2.4 times, cost 18-25% more time per sample and lowered the per-star ESS of ln flux per CPU-hour by 14-20% (equal-length chains) |
 
 `condense()` (the condensed catalogue of Portillo et al. 2017, Sect. 5) uses compiled grid
 searches when numba is installed and returns the same catalogue as its cKDTree path.
