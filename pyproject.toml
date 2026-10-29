@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pcat-de"
+version = "0.1.0"
+description = "Probabilistic cataloging (PCAT-DE), plus pcat_fast: a compiled PCAT sampler for JWST images"
+readme = "README.md"
+# PCAT-DE (pcat-de/, pcat_fast/_vendor/): MIT; pcat_fast: BSD-3-Clause (pcat_fast/LICENSE.rst)
+license = {text = "MIT AND BSD-3-Clause"}
+authors = [
+    {name = "Richard M. Feder"},
+    {name = "Adam Ginsburg"},
+]
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24", "scipy", "astropy"]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Astronomy",
+]
+
+[project.optional-dependencies]
+# the compiled sampler (PCATConfig(engine='numba'))
+fast = ["numba>=0.59"]
+# photutils GriddedPSFModel export (pcat_fast.psf.to_gridded_psf_model)
+psf = ["photutils"]
+test = ["pytest", "numba>=0.59", "photutils"]
+
+[project.urls]
+Upstream = "https://github.com/RichardFeder/pcat-de"
+Repository = "https://github.com/keflavich/pcat-de"
+
+# The PCAT-DE scripts in pcat-de/ are not an importable package (the directory
+# name has a hyphen); pcat_fast is.
+[tool.setuptools]
+packages = ["pcat_fast", "pcat_fast._vendor", "pcat_fast.tests"]
+
+[tool.setuptools.package-data]
+pcat_fast = ["*.c", "LICENSE.rst"]
+"pcat_fast._vendor" = ["*.c", "*.txt"]
+
+[tool.pytest.ini_options]
+testpaths = ["pcat_fast/tests"]
+markers = ["localdata: needs a real ePSF ($PCAT_FAST_TEST_EPSF)"]
