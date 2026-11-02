@@ -1,0 +1,4 @@
+pcat_fast/_lib/
+__pycache__/
+*.egg-info/
+.pytest_cache/

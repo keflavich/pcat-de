@@ -1,0 +1,86 @@
+{
+ "meta": {
+  "args": {
+   "size": 96,
+   "nstar": 400,
+   "sigma": 1.0,
+   "nloop": 500,
+   "nsamp": 400,
+   "nsamp_python": 100,
+   "engines": [
+    "python",
+    "numba",
+    "numba_st",
+    "numba_k1"
+   ],
+   "seed": 1,
+   "out": "benchmarks/results/bench_synthetic_hipergator.json"
+  },
+  "ntruth": 400,
+  "ninit": 208,
+  "fmin": 13.029647156476235,
+  "machine": "x86_64",
+  "processor": "x86_64",
+  "python": "3.13.10",
+  "cpu": "AMD EPYC 75F3 32-Core Processor",
+  "node": "c0710a-s13.ufhpc"
+ },
+ "results": {
+  "python": {
+   "nsamp": 100,
+   "cpu_s": 20.925639632,
+   "us_per_proposal": 418.51279264,
+   "n_mean": 309.36,
+   "n_sd": 6.068805483783444,
+   "logL_mean": -4747.272396910904,
+   "ess_n": 5.425037896784992,
+   "ess_logL": 3.5205267795979336,
+   "ess_n_per_cpu_s": 0.5185062910563452,
+   "ess_logL_per_cpu_s": 0.33647972931869263,
+   "speedup_per_proposal": 1.0,
+   "speedup_ess_n": 1.0
+  },
+  "numba": {
+   "nsamp": 400,
+   "cpu_s": 8.907126244,
+   "us_per_proposal": 44.535631220000006,
+   "n_mean": 312.23,
+   "n_sd": 5.705882929047879,
+   "logL_mean": -4747.904142597155,
+   "ess_n": 29.777011051035565,
+   "ess_logL": 10.692479626715809,
+   "ess_n_per_cpu_s": 6.686109579078638,
+   "ess_logL_per_cpu_s": 2.4008820204874617,
+   "speedup_per_proposal": 9.397257458249626,
+   "speedup_ess_n": 12.894943985071283
+  },
+  "numba_st": {
+   "nsamp": 400,
+   "cpu_s": 6.009058587000002,
+   "us_per_proposal": 30.04529293500001,
+   "n_mean": 311.43,
+   "n_sd": 6.4362333705359065,
+   "logL_mean": -4746.795083812459,
+   "ess_n": 17.96301123761101,
+   "ess_logL": 11.736800279577768,
+   "ess_n_per_cpu_s": 5.978644067965052,
+   "ess_logL_per_cpu_s": 3.9063690625247567,
+   "speedup_per_proposal": 13.929396313273118,
+   "speedup_ess_n": 11.530514038286498
+  },
+  "numba_k1": {
+   "nsamp": 400,
+   "cpu_s": 1.7925678590000018,
+   "us_per_proposal": 8.962839295000009,
+   "n_mean": 313.5,
+   "n_sd": 6.723094525588644,
+   "logL_mean": -4736.881830816707,
+   "ess_n": 26.62935414979011,
+   "ess_logL": 28.486020700338894,
+   "ess_n_per_cpu_s": 29.71084638842683,
+   "ess_logL_per_cpu_s": 31.782362444264784,
+   "speedup_per_proposal": 46.694220309569836,
+   "speedup_ess_n": 57.30084070512889
+  }
+ }
+}
